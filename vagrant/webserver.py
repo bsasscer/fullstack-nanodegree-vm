@@ -1,7 +1,7 @@
 from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
 import cgi
 
-# import CRUD Operations
+# Import CRUD Operations
 from database_setup import Base, Restaurant, MenuItem
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -17,7 +17,7 @@ class webServerHandler(BaseHTTPRequestHandler):
 
     def do_GET(self):
         try:
-            # Create /restarants/new page
+            # Create /restaurants/new page
             if self.path.endswith("/restaurants/new"):
                 self.send_response(200)
                 self.send_header('Content-type', 'text/html')
@@ -81,7 +81,7 @@ class webServerHandler(BaseHTTPRequestHandler):
                 for restaurant in restaurants:
                     output += restaurant.name
                     output += "</br>"
-                    # Objective 2 -- Add Edit and Delete Links
+                    # Add Edit and Delete Links
                     output += "<a href =' /restarants/%s/edit' >Edit </a> " % restaurant.id
                     output += "</br>"
                     output += "<a href =' /restarants/%s/delete'> Delete </a>" % restaurant.id
